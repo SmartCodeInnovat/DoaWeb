@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('/images/backgound.jpg');
+  background-size: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.conteudo{
+  margin:4vh 0;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+form {
+  margin-left: 15px;
+}
+
+.progress-bar {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.progress-bar strong {
+  font-weight: bold;
+}
+
+form {
+  margin-left: 15px;
+}
+
+h2 {
+  color: #2F7D53;
+  margin-left: 15px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  /* Espaçamento entre os radio buttons */
+}
+
+
+.form-check input[type="radio"] {
+  margin-right: 10px;
+  /* Espaçamento entre o input e a label */
+
+}
+
+.form-group-text-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-with-symbol input,
+.date-input input,
+.select-wrapper select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 0.5px solid #626262;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
+.input-with-symbol span {
+  padding: 10px;
+}
+
+.date-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+
+}
+
+.date-input input,
+.date-input select {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.date-input select {
+  margin-right: 0;
+
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#fullname,
+#cpfInput,
+#amount,
+#date {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 0.5px solid #626262;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border-radius: 30px;
+}
+
+#fullname,
+#cpf,
+#amount {
+  flex-basis: calc(50% - 10px);
+  margin-right: 10px;
+
+}
+
+#amount {
+  margin-right: 0;
+}
+
+#fullname-cpf-group {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.inline-group {
+  flex: 1;
+  margin-right: 30px;
+  /* Adiciona margem entre os elementos */
+}
+
+.inline-group:last-child {
+  margin-right: 0;
+  /* Remove a margem do último elemento */
+}
+
+#submit-button {
+  background-color: #2F7D53;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#submit-button:hover {
+  background-color: #3EC08C;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.select-wrapper select {
+  width: calc(100% - 1px);
+  padding: 10px;
+  border: 0.5px solid #626262;
+  appearance: none;
+  border-radius: 30px;
+}
+
+.date-input {
+  justify-content: center;
+  align-items: center;
+  position: center;
+}
+
+.date-input input {
+  padding: 10px;
+  border: 0.5px solid #626262;
+  appearance: none;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group.text-center {
+  text-align: center;
+  /* Centraliza o conteúdo */
+  margin-left: auto;
+  /* Centraliza horizontalmente */
+  margin-right: auto;
+  /* Centraliza horizontalmente */
+}
+
+.input-with-symbol {
+  display: flex;
+}
+
+.input-with-symbol input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.input-with-symbol span {
+  padding: 10px;
+}
+
+.date-input input,
+.date-input select {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+@media (min-width: 1280px) {
+  .form-check-label {
+    display: block;
+    /* Para que cada label ocupe uma linha */
+    margin-bottom: 10px;
+    /* Espaçamento entre os labels */
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .radio-buttons {
+    flex-direction: column;
+  }
+
+  .form-check {
+    margin-right: 0;
+    /* Remove o espaçamento entre os radio buttons */
+    margin-bottom: 10px;
+    /* Adiciona um espaçamento entre os radio buttons */
+  }
+
+  .form-check-label {
+    display: inline-block;
+    /* Para manter os labels em uma linha */
+    margin-right: 20px;
+    /* Espaçamento entre os labels */
+  }
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form-group label {
+    flex-basis: 100%;
+  }
+
+  .form-group input,
+  .form-group select {
+    flex-basis: calc(50% - 10px);
+    margin-right: 10px;
+  }
+}
+
+.social-media-buttons {
+  margin-top: 15px;
+  display: flex;
+  gap: 18px;
+}
+
+.social-media-buttons a {
+  display: flex;
+  justify-content: center;
+  width: 35px;
+  height: 30px;
+  background-color: #2F7D53;
+  font-size: 1.25rem;
+  border-radius: 80px;
+  text-decoration: none;
+  color: White;
+  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow .3s ease;
+  align-items: center;
+}
+
+.social-media-buttons a:hover {
+  box-shadow: 0px 0px 12px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 600px) {
+  #fullname-cpf-group {
+    flex-direction: column;
+  }
+
+  #fullname,#cpfInput,#payment-method,#amount,#txtData{
+    width: 30vh;
+  }
+
+  .form-group input,
+  .form-group select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .form-group label {
+    display: block;
+  }
+}

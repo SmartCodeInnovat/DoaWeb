@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tela de Pagamento</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="stylesheets/pagamento.css">
+
+</head>
+<body>
+  
+<%- include("./partials/header");%>
+<section class="conteudo">
+  <div class="container">
+  <div class="progress-bar">MÉTODO&gt; <strong>INFORMAÇÕES</strong>&gt; CONCLUÍDO</div>
+  <h2>Suas informações</h2>
+  <form>
+    <div class="form-group">
+      <label for="situation">Selecione sua situação:</label>
+      <div class="radio-buttons">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="situation" id="first-time" value="first-time" checked onchange="mostrarOcultarCPF()">
+          <label class="form-check-label" for="first-time">É a minha primeira vez doando</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="situation" id="not-first-time" value="not-first-time" onchange="mostrarOcultarCPF()">
+          <label class="form-check-label" for="not-first-time">Não é a minha primeira vez doando</label>
+        </div>
+      </div>
+    </div>
+  <div class="form-group" id="fullname-cpf-group">
+    <div class="inline-group">
+      <label for="fullname">Nome Completo:</label>
+      <input type="text" id="fullname" name="fullname">
+    </div>
+    <div class="form-group" id="campo-cpf">
+      <div class="inline-group">
+        <label for="cpf">CPF/CNPJ:</label>
+        <input type="text" id="cpfInput" name="cpf" maxlength="14" onkeypress="formatarCPF(event)">
+      </div>
+    </div>
+  </div>
+  <div class="form-group" id="payment-amount-group">
+    <div class="inline-group">
+      <label for="payment-method">Forma de Pagamento:</label>
+      <div class="select-wrapper">
+        <select name="payment-method" id="payment-method">
+          <option value=""></option>
+          <option value="boleto">Boleto</option>
+          <option value="debit-card">Cartão de Débito</option>
+          <option value="credit-card">Cartão de Crédito</option>
+        </select>
+      </div>
+    </div>
+    <div class="inline-group">
+      <label for="amount">Valor:</label>
+      <div class="amount-input">
+        <input type="number" id="amount" name="am" placeholder="R$">
+      </div>
+    </div>
+  </div>
+  <div class="form-group-text-center">
+    <label>Data de Vencimento:</label>
+    <div class='row'>
+      <div class="date-input">
+        <label for="txtData" class='rotulo'></label>
+        <input type='date' id='txtData' name='data' class='caixa-texto'>
+      </div>
+    </div>
+  </div>
+  </form>
+         
+  <div class="form-group-text-center">
+    <button id="submit-button">Efetuar Pagamento</button>
+  </div>
+</div>
+
+</section>
+
+<%- include("./partials/footer");%>
+
+  <script src="/javascripts/pagamento.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+</body>
+
+</html>
+

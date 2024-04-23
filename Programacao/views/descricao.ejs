@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evento Beneficente</title>
+  <link rel="stylesheet" href="stylesheets/descricao.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <%- include("./partials/header");%>
+
+  <main>
+    <h1 class="titulo">Corrida da Solidariedade - Fortaleza, CE</h1>
+
+    <div class="event-info">
+      <div class="info-container">
+        <img src="images/card1.png" alt="Foto 1" class="round-image">
+        <div class="info-text">
+          <p>Junte-se à Fundação Viva Bem na nossa corrida pela saúde mental! Nosso objetivo é arrecadar fundos para apoiar programas recursos essenciais que promovem o bem-estar emocional em nossa comunidade.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-info">
+      <div class="info-container">
+        <div class="info-text">
+          <p>Cada passo dado nesta corrida é um símbolo de solidariedade e esperança para aqueles que enfrentam desafios de saúde mental. Sua participação não apenas fortalece nossa causa, mas também mostra nosso compromisso em construir uma sociedade mais compassiva e inclusiva.</p>
+        </div>
+        <img src="images/foto2.webp" alt="Foto 2" class="round-image">
+      </div>
+    </div>
+
+    <div class="event-description">
+      <p><strong>Data e Horário:</strong> 25 de Abril de 2024, às 07:00</p>
+      <p><strong>Local:</strong> Calçadão da Beira Mar, em frente ao Mercado dos Peixes</p>
+    </div>
+
+
+    <div class="donate">
+      <h2>Gostou do projeto?</h2>
+      <button onclick="window.location.href = '/pagamento';">DOE!</button>
+      <div class="likes">
+        <i class="far fa-heart"></i> 273 CURTIDAS
+      </div>
+    </div>
+  </main>
+
+<%- include("./partials/footer");%>
+</body>
+</html>

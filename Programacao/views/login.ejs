@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/stylesheets/autenticacao.css">
+</head>
+
+<body>
+    <section class="container">
+        <div class="sidebar">
+            <img src="/images/logo3.png" alt="Logo da doaweb">
+            <div class="centered-text">
+                <h1>Seja bem vindo!</h1>
+                <p>Acesse sua conta</p>
+            </div>
+        </div>
+
+        <div class="content2">
+            <h1 class="titulo">Acesse sua conta</h1>
+            <form id="login-form">
+                <div class="form-group green-bg rounded">
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group green-bg rounded">
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                </div>
+                <div class="centered-text">
+                    <p><a href="/recuperarSenha">Esqueceu a senha?</a></p>
+                </div>
+                <div class="centered-text">
+                    <button type="submit" class="green-button" onclick="window.location.href = '/evento';">ENTRAR</button>
+                </form>
+
+            <div class="centered-text">
+                <p>Logar com:</p>
+                <div class="social-buttons">
+                    <button><img src="/images/google_icon.png" alt="Google"></button>
+                    <button><img src="/images/apple_icon.png" alt="Apple"></button>
+                </div>
+                <div class="centered-text">
+                <p>Ainda não tem uma conta?<a href="/cadastro"> Cadastre-se</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

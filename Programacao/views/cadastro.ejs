@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="/stylesheets/autenticacao.css">
+</head>
+
+<body>
+  <section class="container">
+    <div class="sidebar">
+        <img src="/images/logo3.png" alt="Logo da doaweb">
+        <div class="centered-text">
+          <h1>Seja bem vindo!</h1>
+          <p> Acesse sua conta<p>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 class="titulo">Crie sua conta</h1>
+        <div class="social-buttons">
+          <button><img src="/images/google_icon.png" alt="Google"></button>
+          <button><img src="/images/apple_icon.png" alt="Apple"></button>
+        </div>
+        <div class="centered-text">
+          <p>Ou use o email para se cadastrar</p>
+          <div class="content">
+            <form id="registration-form">
+              <div class="form-group green-bg rounded">
+                <input type="text" id="username" name="username" placeholder="Nome" required>
+              </div>
+              <div class="form-group green-bg rounded">
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+              </div>
+              <div class="form-group green-bg rounded">
+                <input type="password" id="password" name="password" placeholder="Senha" required>
+              </div>
+              <button type="submit" class="green-button" onclick="window.location.href = '/evento';">CADASTRAR</button>
+            </form>
+            <div class="centered-text">
+              <p>Já tem uma conta?<a href="/login"> Faça login</a></p>
+            </div>
+          </div>
+        </div>
+  </section>
+      
+
+</body>
+
+</html>
