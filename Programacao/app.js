@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
 var cadastroRouter = require('./routes/cadastro');
 var loginRouter = require('./routes/login');
@@ -32,7 +33,7 @@ app.use('/cadastro', cadastroRouter);
 app.use('/recuperarSenha', recuperarSenhaRouter);
 app.use('/evento', eventoRouter);
 app.use('/descricao', descricaoRouter);
-app.use('/pagamento', pagamentoRouter);
+app.use('/pagamento', pagamentoRouter);;
 app.use("/teste", testeRouter);
 app.use('/users', usersRouter);
 

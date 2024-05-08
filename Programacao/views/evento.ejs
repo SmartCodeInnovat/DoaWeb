@@ -25,40 +25,40 @@
         <ul class="submenu">
           <!-- Lista dos botões dos meses -->
           <li class="submenu-item">
-            <button class="submenu-button">janeiro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/janeiro';">janeiro</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">fevereiro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/fevereiro';">fevereiro</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">março</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/marco';">março</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">abril</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/abril';">abril</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">maio</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/maio';">maio</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">junho</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/junho';">junho</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">julho</button>
+            <button class="submenu-button"onclick="window.location.href = '/evento/mes/julho';">julho</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">agosto</button>
+            <button class="submenu-button"onclick="window.location.href = '/evento/mes/agosto';">agosto</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">setembro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/setembro';">setembro</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">outubro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/outubro';">outubro</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">novembro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/novembro';">novembro</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">dezembro</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/mes/dezembro';">dezembro</button>
           </li>
         </ul>
         <!-- Lista dos botões dos meses -->
@@ -70,16 +70,16 @@
         <ul class="submenu">
           <!-- Lista dos botões dos meses -->
           <li class="submenu-item">
-            <button class="submenu-button">Fortaleza</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/local/Fortaleza';">Fortaleza</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">Eusébio</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/local/Eusébio';">Eusébio</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">Quixadá</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/local/Quixadá';">Quixadá</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">Sobral</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/local/Sobral';">Sobral</button>
           </li>
         </ul>
         <!-- Lista dos botões dos meses -->
@@ -92,13 +92,13 @@
         <ul class="submenu">
           <!-- Lista dos botões dos meses -->
           <li class="submenu-item">
-            <button class="submenu-button">Alimentos e Roupas</button>
+            <button class="submenu-button"onclick="window.location.href = '/evento/acao/Alimentos e Roupas';">Alimentos e Roupas</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">Eventos culturais</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/acao/Eventos Culturais';">Eventos Culturais</button>
           </li>
           <li class="submenu-item">
-            <button class="submenu-button">Eventos esportivos</button>
+            <button class="submenu-button" onclick="window.location.href = '/evento/acao/Eventos Esportivos';">Eventos Esportivos</button>
           </li>
         </ul>
         <!-- Lista dos botões dos meses -->
@@ -111,113 +111,25 @@
     <div class="container py-5">
 
       <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card1.png');">
+                   <% evento.forEach(p =>{ %>
+                    <div class="col">
+          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%- p.imagemCard %>);">
             <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
+              <h5 class="card-title"><%- p.nome %></h5>
               <p class="card-text">
-                Fortaleza - Ce
+                <%- p.cidade %>
               </p>
             </div>
-              <div class="inferior"><button class="btn btn-primary" onclick="window.location.href = '/descricao';">VER EVENTO!</button></div> 
+            <div class="inferior"><a href="/descricao/<%- p._id %>" class="btn btn-primary" >VER EVENTO!</a>></div> 
           </div>
+          </div>
+
+                  <% }) %>
+                </div>
+
+              
         </div>
         
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card2.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card3.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card4.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card5.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div> 
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card6.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>       
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card7.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card8.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>  
-        
-        <div class="col">
-          <div class="card"  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/card9.png');">
-            <div class="card-body">
-              <h5 class="card-title">Corrida da solidariedade</h5>
-              <p class="card-text">
-                Fortaleza - Ce
-              </p>
-            </div>
-              <div class="inferior"><button class="btn btn-primary">VER EVENTO!</button></div> 
-          </div>
-        </div>        
         
         
       </div>
@@ -232,4 +144,7 @@
       crossorigin="anonymous"
     ></script>
   </body>
+
+
+
 </html>
