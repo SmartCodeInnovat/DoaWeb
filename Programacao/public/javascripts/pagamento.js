@@ -1,19 +1,25 @@
-//Ocultar campo
-function mostrarOcultarCPF() {
-  var opcaoSelecionada = document.querySelector(
-    'input[name="situation"]:checked'
-  ).value;
-  var campoCPF = document.getElementById("campo-cpf");
+const closeMessage = document.querySelector("#close-message");
+const message = document.querySelector(".message");
 
-  if (opcaoSelecionada === "first-time") {
-    campoCPF.style.display = "block";
-  } else {
-    campoCPF.style.display = "none";
-  }
-}
-document.addEventListener("DOMContentLoaded", function () {
-  mostrarOcultarCPF();
+closeMessage.addEventListener("click", () =>{
+  message.style.display = "none";
 });
+
+setTimeout(() => {
+  message.style.display = "none";
+},5000);
+
+//FullName
+function toggleFullname() {
+    var naoPrimeiraDoacao = document.getElementById('naoPrimeiraDoacao').checked;
+    var fullnameField = document.getElementById('campo-fullname');
+
+    if (naoPrimeiraDoacao) {
+        fullnameField.style.display = 'none';
+    } else {
+        fullnameField.style.display = 'block';
+    }
+}
 //Footer
 window.addEventListener("scroll", function () {
   var footer = document.getElementById("footer");

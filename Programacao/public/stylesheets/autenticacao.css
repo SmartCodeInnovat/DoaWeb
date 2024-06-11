@@ -1,22 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     background-image: url('/images/backgound.jpg');
     background-size: cover;
     min-height: 100vh;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
-.container{
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+    padding: 1%;
+    position: absolute;
+    top: 0;
+    z-index: 10000000;
+    background-color: rgb(245, 92, 92);
+    color: #8a0000;
+    margin-bottom: 5px;
+    font-weight: large;
+    font-size: 20px;
+}
+
+.container {
     background-color: white;
     display: flex;
     align-items: center;
@@ -62,8 +79,8 @@ body{
     margin: 20px;
 }
 
-.titulo{
-    margin-top:6vh;
+.titulo {
+    margin-top: 6vh;
 }
 
 h1 {
@@ -85,8 +102,8 @@ a:hover {
     font-weight: bold;
 }
 
-p{
-    font-size:15px;
+p {
+    font-size: 15px;
 }
 
 .content {
@@ -160,6 +177,22 @@ input[type="novasenha"]::placeholder {
     font-size: 15px;
 
 }
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: calc(100% - 40px); /* Ajusta a largura do input */
+    padding-right: 40px; /* Espaço para o ícone */
+}
+
+.password-container i {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+}
 
 .green-button {
     border-radius: 20px;
@@ -192,8 +225,8 @@ input[type="novasenha"]::placeholder {
     margin: 0 5px;
 }
 
-.social-buttons button:hover{
-    cursor:pointer;
+.social-buttons button:hover {
+    cursor: pointer;
 }
 
 .social-buttons button img {
@@ -209,8 +242,12 @@ input[type="novasenha"]::placeholder {
         min-height: 100vh;
     }
 
-    .titulo{
-        margin-top:5vh;
+    .message {
+        padding: 3%;
+    }
+
+    .titulo {
+        margin-top: 5vh;
     }
 
     .container,
@@ -253,11 +290,11 @@ input[type="novasenha"]::placeholder {
         margin-top: 10px;
     }
 
-    p{
+    p {
         font-size: 14px;
     }
 
-    a{
-        font-size:14px;
+    a {
+        font-size: 14px;
     }
 }

@@ -5,10 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="/stylesheets/autenticacao.css">
 </head>
 
 <body>
+    <% if (message !== "") {%>
+        <section class="message message-<%= type %>">
+          <p><%= message %></p>
+          <span id="close-message"><i class="bi bi-x"></i></span>
+        </section>
+        <% }%>
+
     <section class="container">
         <div class="sidebar">
             <img src="/images/logo3.png" alt="Logo da doaweb">
@@ -20,18 +28,19 @@
 
         <div class="content2">
             <h1 class="titulo">Acesse sua conta</h1>
-            <form id="login-form">
+            <form action="/login" method="post" id="login-form">
                 <div class="form-group green-bg rounded">
-                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+                    <input type="text" id="name" name="email" placeholder="E-mail" required>
                 </div>
-                <div class="form-group green-bg rounded">
+                <div class="form-group green-bg rounded password-container">
                     <input type="password" id="password" name="password" placeholder="Senha" required>
+                    <i class="bi bi-eye-fill" onclick="mostrarSenha()" id="icon"></i>
                 </div>
                 <div class="centered-text">
                     <p><a href="/recuperarSenha">Esqueceu a senha?</a></p>
                 </div>
                 <div class="centered-text">
-                    <button type="submit" class="green-button" onclick="window.location.href = '/evento';">ENTRAR</button>
+                    <button type="submit" class="green-button">ENTRAR</button>
                 </form>
 
             <div class="centered-text">
@@ -46,6 +55,8 @@
             </div>
         </div>
     </section>
+
+    <script src="/javascripts/script.js"></script>
 </body>
 
 </html>

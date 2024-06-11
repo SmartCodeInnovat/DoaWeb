@@ -5,10 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="/stylesheets/autenticacao.css">
+
 </head>
 
 <body>
+
+  <% if (message !== "") {%>
+<section class="message message-<%= type %>">
+  <p><%= message %></p>
+  <span id="close-message"><i class="bi bi-x"></i></span>
+</section>
+<% }%>
+
   <section class="container">
     <div class="sidebar">
         <img src="/images/logo3.png" alt="Logo da doaweb">
@@ -27,17 +37,18 @@
         <div class="centered-text">
           <p>Ou use o email para se cadastrar</p>
           <div class="content">
-            <form id="registration-form">
+            <form action= "/cadastro" method="post" id="registration-form">
               <div class="form-group green-bg rounded">
                 <input type="text" id="username" name="username" placeholder="Nome" required>
               </div>
               <div class="form-group green-bg rounded">
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
               </div>
-              <div class="form-group green-bg rounded">
-                <input type="password" id="password" name="password" placeholder="Senha" required>
-              </div>
-              <button type="submit" class="green-button" onclick="window.location.href = '/evento';">CADASTRAR</button>
+              <div class="form-group green-bg rounded password-container">
+                <input type="password" id="password" name="password" placeholder="Senha" minlength="8" required>
+                <i class="bi bi-eye-fill" onclick="mostrarSenha()" id="btn-senha"></i>
+            </div>
+              <button type="submit" class="green-button">CADASTRAR</button>
             </form>
             <div class="centered-text">
               <p>Já tem uma conta?<a href="/login"> Faça login</a></p>
@@ -45,8 +56,7 @@
           </div>
         </div>
   </section>
-      
-
+  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>

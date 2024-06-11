@@ -3,10 +3,27 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-image: url('/images/backgound.jpg');
-  background-size: no-repeat;
+  background-position: center;
   margin: 0;
   padding: 0;
 }
+
+.message{
+  display:flex;
+  align-items: center;
+  justify-content: space-between !important; 
+  width: 100%;
+  padding: 1%;
+  position: absolute;
+  top:0;
+  z-index: 10000000;
+  background-color: rgb(245, 92, 92);
+  color:#8a0000;
+  margin-bottom:5px;
+  font-weight: large;
+  font-size: 20px;
+}
+
 
 .conteudo{
   margin:4vh 0;
@@ -70,7 +87,9 @@ h2 {
   /* Espaçamento entre o input e a label */
 
 }
-
+#payment-amount-group .inline-group:first-child {
+  margin-right: 20px; /* Adiciona um espaço entre os campos "Valor" e "Forma de Pagamento" */
+}
 .form-group-text-center {
   margin-left: auto;
   margin-right: auto;
@@ -100,7 +119,7 @@ h2 {
 .date-input input,
 .date-input select {
   flex: 1;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .date-input select {
@@ -143,16 +162,28 @@ h2 {
   white-space: nowrap;
 }
 
-.inline-group {
-  flex: 1;
-  margin-right: 30px;
-  /* Adiciona margem entre os elementos */
+display: flex;
+align-items: center;
 }
 
-.inline-group:last-child {
-  margin-right: 0;
-  /* Remove a margem do último elemento */
+.inline-group label {
+margin-right: 10px;
 }
+
+#fullname-cpf-group {
+display: flex;
+justify-content: space-between;
+}
+
+#fullname-cpf-group .inline-group {
+flex: 1;
+}
+
+#campo-cpf, #campo-fullname {
+flex: 1;
+}
+
+
 
 #submit-button {
   background-color: #2F7D53;
