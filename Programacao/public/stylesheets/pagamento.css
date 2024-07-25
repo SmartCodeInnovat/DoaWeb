@@ -24,10 +24,6 @@ body {
   font-size: 20px;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 .conteudo{
   margin:4vh 0;
 }
@@ -81,7 +77,6 @@ h2 {
   display: flex;
   align-items: center;
   margin-right: 20px;
-<<<<<<< HEAD
 }
 
 .form-check input[type="radio"] {
@@ -130,25 +125,6 @@ h2 {
 }
 
 
-=======
-  /* Espaçamento entre os radio buttons */
-}
-
-
-.form-check input[type="radio"] {
-  margin-right: 10px;
-  /* Espaçamento entre o input e a label */
-
-}
-#payment-amount-group .inline-group:first-child {
-  margin-right: 20px; /* Adiciona um espaço entre os campos "Valor" e "Forma de Pagamento" */
-}
-.form-group-text-center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 .input-with-symbol input,
 .date-input input,
 .select-wrapper select {
@@ -164,19 +140,12 @@ h2 {
 }
 
 .date-input {
-<<<<<<< HEAD
   display: flex;
   flex-direction: column; 
 }
 
 .date-input label {
   margin-bottom: 5px; 
-=======
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 }
 
 .date-input input,
@@ -185,18 +154,12 @@ h2 {
   margin-left: 10px;
 }
 
-<<<<<<< HEAD
 .date-input input {
   margin-left: 0;
   }
 
 .date-input select {
   margin-right: 0;
-=======
-.date-input select {
-  margin-right: 0;
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 }
 
 .form-group label {
@@ -221,7 +184,6 @@ h2 {
 #amount {
   flex-basis: calc(50% - 10px);
   margin-right: 10px;
-<<<<<<< HEAD
 }
 
 #payment-method,
@@ -236,11 +198,6 @@ h2 {
 }
 
 
-=======
-
-}
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 #amount {
   margin-right: 0;
 }
@@ -251,7 +208,6 @@ h2 {
   white-space: nowrap;
 }
 
-<<<<<<< HEAD
 .inline-group label {
   margin-right: 10px;
 }
@@ -269,31 +225,6 @@ h2 {
   flex: 1;
 }
 
-=======
-display: flex;
-align-items: center;
-}
-
-.inline-group label {
-margin-right: 10px;
-}
-
-#fullname-cpf-group {
-display: flex;
-justify-content: space-between;
-}
-
-#fullname-cpf-group .inline-group {
-flex: 1;
-}
-
-#campo-cpf, #campo-fullname {
-flex: 1;
-}
-
-
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 #submit-button {
   background-color: #2F7D53;
   color: #fff;
@@ -326,15 +257,6 @@ flex: 1;
   border-radius: 30px;
 }
 
-<<<<<<< HEAD
-=======
-.date-input {
-  justify-content: center;
-  align-items: center;
-  position: center;
-}
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 .date-input input {
   padding: 10px;
   border: 0.5px solid #626262;
@@ -346,16 +268,8 @@ flex: 1;
 
 .form-group.text-center {
   text-align: center;
-<<<<<<< HEAD
   margin-left: auto;
   margin-right: auto;
-=======
-  /* Centraliza o conteúdo */
-  margin-left: auto;
-  /* Centraliza horizontalmente */
-  margin-right: auto;
-  /* Centraliza horizontalmente */
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 }
 
 .input-with-symbol {
@@ -376,30 +290,16 @@ flex: 1;
 .date-input input,
 .date-input select {
   margin-bottom: 10px;
-<<<<<<< HEAD
   margin-left: 0; 
-=======
-  margin-right: 10px;
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 }
 
 @media (min-width: 1280px) {
   .form-check-label {
     display: block;
-<<<<<<< HEAD
     margin-bottom: 10px;
   }
 }
 
-=======
-    /* Para que cada label ocupe uma linha */
-    margin-bottom: 10px;
-    /* Espaçamento entre os labels */
-  }
-}
-
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 @media only screen and (min-width: 600px) {
   .radio-buttons {
     flex-direction: column;
@@ -407,24 +307,12 @@ flex: 1;
 
   .form-check {
     margin-right: 0;
-<<<<<<< HEAD
     margin-bottom: 10px;
-=======
-    /* Remove o espaçamento entre os radio buttons */
-    margin-bottom: 10px;
-    /* Adiciona um espaçamento entre os radio buttons */
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
   }
 
   .form-check-label {
     display: inline-block;
-<<<<<<< HEAD
     margin-right: 20px;
-=======
-    /* Para manter os labels em uma linha */
-    margin-right: 20px;
-    /* Espaçamento entre os labels */
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
   }
 
   .form-group {
@@ -490,7 +378,6 @@ flex: 1;
     display: block;
   }
 }
-<<<<<<< HEAD
 @media only screen and (max-width: 600px) {
     #fullname,
     #cpfInput,
@@ -522,5 +409,3 @@ flex: 1;
       font-size: 1.5rem;
     }
   }
-=======
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761

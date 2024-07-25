@@ -77,7 +77,6 @@ body {
 .centered-text {
     text-align: center;
     margin: 20px;
-<<<<<<< HEAD
     align-items: center;
 }
 
@@ -86,8 +85,6 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px 0;
-=======
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 }
 
 .titulo {
@@ -308,8 +305,4 @@ input[type="novasenha"]::placeholder {
     a {
         font-size: 14px;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761

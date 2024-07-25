@@ -11,7 +11,6 @@ const { stringify } = require('querystring');
 let message = "";
 let type = "";
 /*codigo api asaas $aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAwODE0NzU6OiRhYWNoX2YxYWVmMzc3LTZlZDgtNGY1Mi1iMDc5LWNkMjVhMzE5NWE1OQ== */
-<<<<<<< HEAD
 const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -73,10 +72,6 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log("Servidor rodando na porta ${PORT}");
 });
-=======
-
-
->>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
