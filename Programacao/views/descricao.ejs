@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evento Beneficente</title>
+  <link rel="stylesheet" href="/stylesheets/descricao.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <%- include("./partials/header");%>
+
+  
+  <main>
+    <h1 class="titulo"><%- evento.nome %></h1>
+
+    <div class="event-info">
+      <div class="info-container">
+        <img src="<%- evento.imagemCard %>" alt="Foto 1" class="round-image">
+        <div class="info-text">
+          <p><%- evento.descricaoP %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-info">
+      <div class="info-container">
+        <div class="info-text">
+          <p><%- evento.descricaoS %></p>
+        </div>
+        <img src="<%- evento.imagemDescricao %>" alt="Foto 2" class="round-image">
+      </div>
+    </div>
+
+    <div class="event-description">
+      <p><strong>Data e Horário:</strong> <%- evento.dataHora %></p>
+      <p><strong>Local: </strong><%- evento.localizacao %></p>
+    </div>
+
+
+    <div class="donate">
+      <h2>Gostou do projeto?</h2>
+    <button onclick="window.location.href = '/pagamento/<%- evento._id %>';">DOE!</button></a>
+      <div class="likes">
+        <i class="far fa-heart"></i> 273 CURTIDAS
+      </div>
+    </div>
+
+  </main>
+
+<%- include("./partials/footer");%>
+</body>
+</html>

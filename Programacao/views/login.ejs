@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/stylesheets/autenticacao.css">
+<<<<<<< HEAD
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js" async></script>
+  <script>
+    function handleCredentialResponse(response) {
+      const data = jwt_decode (response.credential);
+      console.log(data)
+    }
+    window.onload = function () {
+
+      google.accounts.id.initialize({
+        client_id: "896375909767-p9d843nkn6dbgj60car1hbqv44t95evh.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        { 
+          theme: "outline", 
+          size: "large",
+          type: "standard",
+          shape: "pill",
+          text: "signin_with",
+          logo_alignment:"left"
+        }  // customization attributes
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+  </script>
+=======
+>>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
+</head>
+
+<body>
+    <% if (message !== "") {%>
+        <section class="message message-<%= type %>">
+          <p><%= message %></p>
+          <span id="close-message"><i class="bi bi-x"></i></span>
+        </section>
+        <% }%>
+
+    <section class="container">
+        <div class="sidebar">
+            <img src="/images/logo3.png" alt="Logo da doaweb">
+            <div class="centered-text">
+                <h1>Seja bem vindo!</h1>
+                <p>Acesse sua conta</p>
+            </div>
+        </div>
+
+        <div class="content2">
+            <h1 class="titulo">Acesse sua conta</h1>
+            <form action="/login" method="post" id="login-form">
+                <div class="form-group green-bg rounded">
+                    <input type="text" id="name" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="form-group green-bg rounded password-container">
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                    <i class="bi bi-eye-fill" onclick="mostrarSenha()" id="icon"></i>
+                </div>
+                <div class="centered-text">
+                    <p><a href="/recuperarSenha">Esqueceu a senha?</a></p>
+                </div>
+                <div class="centered-text">
+                    <button type="submit" class="green-button">ENTRAR</button>
+                </form>
+
+            <div class="centered-text">
+                <p>Logar com:</p>
+<<<<<<< HEAD
+                <div id="buttonDiv"></div>
+=======
+                <div class="social-buttons">
+                    <button><img src="/images/google_icon.png" alt="Google"></button>
+                    <button><img src="/images/apple_icon.png" alt="Apple"></button>
+                </div>
+>>>>>>> fd2817d5cd6c0e86b576dd61f30c6b51a663c761
+                <div class="centered-text">
+                <p>Ainda não tem uma conta?<a href="/cadastro"> Cadastre-se</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/javascripts/script.js"></script>
+</body>
+
+</html>

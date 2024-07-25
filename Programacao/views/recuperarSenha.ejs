@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar Senha</title>
+   <link rel="stylesheet" href="/stylesheets/autenticacao.css">
+</head>
+
+<body>
+    <section class="containersenha">
+      <div class="sidebar">
+        <img src="/images/logo3.png" alt="Logo da doaweb">
+        <div class="centered-text">
+          <h1>Seja bem vindo!</h1>
+          <p>Acesse sua conta</p>
+        </div>
+      </div>
+      <div class="contentsenha">
+        <div class="centered-text">
+          <h1>Redefinir sua senha</h1>
+        </div>
+        <form id="forgot-password-form">
+          <div class="form-group green-bg rounded">
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+          </div>
+          <div class="form-group">
+            <button type="button" class="send-code-button">Enviar Código</button>
+          </div>
+          <div class="form-group green-bg rounded">
+            <input type="codigo" id="codigo" name="codigo" placeholder="Código" required>
+          </div>
+          <div class="form-group green-bg rounded">
+            <input type="novasenha" id="novasenha" name="novasenha" placeholder="Nova senha" required>
+          </div>
+          <div class="centered-text">
+            <button type="submit" class="green-button"onclick="window.location.href = '/evento';">ENTRAR</button>
+          </div>
+        </form>
+      </div>
+    </section>
+    
+</body>
+
+</html>
