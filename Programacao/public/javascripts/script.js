@@ -1,7 +1,7 @@
 const closeMessage = document.querySelector("#close-message");
 const message = document.querySelector(".message");
 const password = document.getElementById("password");
-let icon = document.getElementId("icon");
+let icon = document.getElementById("icon");
 
 
 closeMessage.addEventListener("click", () =>{
@@ -10,7 +10,7 @@ closeMessage.addEventListener("click", () =>{
 
 setTimeout(() => {
     message.style.display = "none";
-},5000);
+},6000);
 
 function mostrarSenha(){
     var inputPass = document.getElementById('password')
@@ -23,4 +23,4 @@ function mostrarSenha(){
      inputPass.setAttribute('type', 'password')
      btnShowPass.classList.replace('bi-eye-slash-fill','bi-eye-fill')
    }
- }
+ };

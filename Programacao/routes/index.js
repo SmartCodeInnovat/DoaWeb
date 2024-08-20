@@ -1,4 +1,5 @@
 var express = require('express');
+const nodemailer = require("nodemailer");
 var pasth = require('path');
 var bcrypt = require('bcrypt');
 var router = express.Router();
@@ -8,83 +9,143 @@ var donation = require("../src/models/dao/doacaoDAO");
 const fetch = require('node-fetch');
 const cors = require('cors');
 const { stringify } = require('querystring');
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 let message = "";
 let type = "";
-/*codigo api asaas $aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAwODE0NzU6OiRhYWNoX2YxYWVmMzc3LTZlZDgtNGY1Mi1iMDc5LWNkMjVhMzE5NWE1OQ== */
 const session = require('express-session');
 const passport = require('passport');
+const { promises } = require('dns');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const segredo = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
 
-const app = express();
-
-// Configuração de sessão para passport
-app.use(session({
-    secret: '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',
-    resave: false,
-    saveUninitialized: true
-}));
-
-// Inicialização do passport e sessão
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Configuração da estratégia do Google OAuth
-passport.use(new GoogleStrategy({
-    clientID: '896375909767-p9d843nkn6dbgj60car1hbqv44t95evh.apps.googleusercontent.com',
-    clientSecret: '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',
-    callbackURL: 'http://localhost:3000/auth/google/callback' // URL de callback após login no Google
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // Função de verificação do usuário, geralmente você autentica o usuário aqui
-    // Pode ser necessário implementar esta função de acordo com sua lógica de usuário
-    return done(null, profile);
-  }
-));
-
-// Serialização e desserialização de usuário para sessão
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-// Rota de autenticação com o Google
-app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-// Rota de callback do Google após login
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    // Redirecionar para a página desejada após o login bem-sucedido
-    res.redirect('/evento');
-  });
-
-// Outras rotas do seu aplicativo
-app.get('/', (req, res) => {
-  res.send('Página inicial');
-});
-
-// Porta em que o servidor irá escutar
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log("Servidor rodando na porta ${PORT}");
-});
-/* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.post("/cadastro", async (req, res) => {
+  const data = {
+    name: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  }
+  const existingUser = await collection.findOne({ email: data.email });
+  if (existingUser) {
+    setTimeout(() => { message = "" }, 1000);
+    console.log(message);
+    message = "Este email já está sendo utilizado!"
+    type = "danger";
+    res.render("cadastro", { title: "Express", message: message, type: type });
+    setTimeout(() => { message = "" }, 2000);
+  } else {
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(data.password, saltRounds);
 
-router.get("/descricao/:id", async (req, res, next) => {
-  const id = req.params.id;
+    data.password = hashedPassword;
+    const userdata = await collection.insertMany(data);
+    var eventos = await db.getEventos();
+    res.render("evento", { title: "Express", evento: eventos });
+  }
+});
+
+router.post("/login", async (req, res) => {
   try {
-    const doc = await db.findOne(id);
-    res.render('descricao', { title: 'Descricao', evento: doc });
-  } catch (err) {
-    next(err);
+    const check = await collection.findOne({ email: req.body.email });
+    if (!check) {
+      message = "Seu e-mail está incorreto!";
+      type = "danger";
+      res.render("login", { title: "Express", message: message, type: type });
+    }
+
+    const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+    if (isPasswordMatch) {
+      var eventos = await db.getEventos();
+      res.render("evento", { title: "Express", evento: eventos });
+
+    } else {
+      message = "Sua senha está incorreta!";
+      type = "danger";
+      res.render("login", { title: "Express", message: message, type: type });
+    }
+  } catch {
+
+  }
+
+});
+
+router.post("/recuperarSenha", async (req, res) => {
+  const userEmail = req.body.email;
+  const existingEmail = await collection.findOne({ email: userEmail });
+
+   if(existingEmail){
+    const userName = existingEmail.name.split(/\s+/)[0];
+    const token = jwt.sign({ id: existingEmail._id }, segredo, { expiresIn: '24h' });
+    const resectURL = `http://localhost:3000/recuperarSenha/${token}`;
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, 
+      auth: {
+        user: "julia.dantas62@aluno.ifce.edu.br",
+        pass: "Julia2410",
+      },
+    });
+      const info = {
+        from: "Smart Code", // sender address
+        to:  `${userEmail}`, // list of receivers
+        subject: 'Redefinição de Senha - DoaWeb', // Subject lin
+        html: `<p>Olá ${userName},</p>
+              <p>Recebemos uma solicitação para redefinir a senha da sua conta no DoaWeb. Se você fez essa solicitação, siga o link abaixo para criar uma nova senha.</p>
+              <p><a href="${resectURL}">Redefinir Senha</a></p>
+              <p>O link acima é válido por 24 horas. Se você não tiver solicitado a redefinição de senha, por favor, ignore este e-mail. Sua senha permanecerá inalterada.</p>
+              <p>Se precisar de mais ajuda, você pode entrar em contato com nosso suporte pelo e-mail <a href="mailto:suporte@doaweb.com">suporte@doaweb.com</a> ou acessar nossa Central de Ajuda em <a href="https://www.doaweb.com/ajuda">https://www.doaweb.com/ajuda</a>.</p>
+              <p>Atenciosamente,<br>Equipe DoaWeb</p>`,    
+      };
+      new Promise((resolve, reject) =>{
+      transporter.sendMail(info)
+      .then(res =>{
+        transporter.close();
+        return resolve(res);
+      })
+      setTimeout(() => { message = "" }, 1000);
+      message = "O e-mail já foi enviado!"
+      type = "insurace";
+      res.render("recuperarSenha", { title: "Express", message: message, type: type });
+      setTimeout(() => { message = "" }, 2000);
+      }).catch(error =>{
+        console.log(error);
+        transporter.close();
+        return reject(error);
+      })
+    }else{
+    setTimeout(() => { message = "" }, 1000);
+    message = "Este email não está cadastrado!"
+    type = "danger";
+    res.render("recuperarSenha", { title: "Express", message: message, type: type });
+    setTimeout(() => { message = "" }, 2000);
+   }
+});
+
+router.get("/recuperarSenha/:token", async (req, res) => {
+  const token = req.params.token;
+  res.render('senhaNova', { title: 'Nova Senha',message, type,token:token });
+});
+
+router.post("/recuperarSenha/:token", async (req, res) => {
+  const token = req.params.token;
+  const newPassword = req.body.novasenha;
+  try {
+    const decoded = jwt.verify(token, segredo);
+    const userId = decoded.id;
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const UpdateUser= await collection.updateOne(
+    {_id: userId },          // Filtro para encontrar o documento
+    { $set: { password: hashedPassword } }  // Atualiza o campo senha
+)
+    res.redirect('/evento');
+  } catch (error) {
+    console.error('Erro na redefinição de senha:', error);
+    res.status(400).send('Token inválido ou expirado.');
   }
 });
 
@@ -118,58 +179,14 @@ router.get("/evento/acao/:nome", async (req, res, next) => {
   }
 });
 
-
-router.post("/cadastro", async (req, res) => {
-  const data = {
-    name: req.body.username,
-    email: req.body.email,
-    password: req.body.password
-  }
-
-  const existingUser = await collection.findOne({ email: data.email });
-  if (existingUser) {
-    setTimeout(() => { message = "" }, 1000);
-    console.log(message);
-    message = "Este email já está sendo utilizado!"
-    type = "danger";
-    res.render("cadastro", { title: "Express", message: message, type: type });
-    setTimeout(() => { message = "" }, 2000);
-  } else {
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-
-    data.password = hashedPassword;
-    const userdata = await collection.insertMany(data);
-    var eventos = await db.getEventos();
-    console.log(eventos);
-    res.render("evento", { title: "Express", evento: eventos });
-  }
-});
-
-router.post("/login", async (req, res) => {
+router.get("/descricao/:id", async (req, res, next) => {
+  const id = req.params.id;
   try {
-    const check = await collection.findOne({ email: req.body.email });
-    if (!check) {
-      message = "Seu e-mail está incorreto!";
-      type = "danger";
-      res.render("login", { title: "Express", message: message, type: type });
-    }
-
-    const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-    if (isPasswordMatch) {
-      var eventos = await db.getEventos();
-      console.log(eventos);
-      res.render("evento", { title: "Express", evento: eventos });
-
-    } else {
-      message = "Sua senha está incorreta!";
-      type = "danger";
-      res.render("login", { title: "Express", message: message, type: type });
-    }
-  } catch {
-
+    const doc = await db.findOne(id);
+    res.render('descricao', { title: 'Descricao', evento: doc });
+  } catch (err) {
+    next(err);
   }
-
 });
 
 router.get('/pagamento/:id', async function(req, res, next) {
@@ -391,9 +408,62 @@ if (req.body.situation === "first-time") {
     }
 
   }
+})
 
-}
-)
-  //Se não for a minha primeira vez doando
-  
+/* Configuração de sessão para passport
+app.use(session({
+    secret: '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',
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Inicialização do passport e sessão
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configuração da estratégia do Google OAuth
+passport.use(new GoogleStrategy({
+    clientID: '896375909767-p9d843nkn6dbgj60car1hbqv44t95evh.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'http://localhost:3000/auth/google/callback' // URL de callback após login no Google
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // Função de verificação do usuário, geralmente você autentica o usuário aqui
+    // Pode ser necessário implementar esta função de acordo com sua lógica de usuário
+    return done(null, profile);
+  }
+));
+
+// Serialização e desserialização de usuário para sessão
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// Rota de autenticação com o Google
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Rota de callback do Google após login
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/' }),
+  function(req, res) {
+    // Redirecionar para a página desejada após o login bem-sucedido
+    res.redirect('/evento');
+  });
+
+// Outras rotas do seu aplicativo
+app.get('/', (req, res) => {
+  res.send('Página inicial');
+});
+
+// Porta em que o servidor irá escutar
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log("Servidor rodando na porta ${PORT}");
+});*/
+ 
 module.exports = router;

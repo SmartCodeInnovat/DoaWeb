@@ -17,7 +17,23 @@ body {
 
 }
 
-.message {
+.message-insurace {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 100%;
+    padding: 1%;
+    position: absolute;
+    top: 0;
+    z-index: 10000000;
+    background-color: rgb(77, 249, 71);
+    color: #178a00;
+    margin-bottom: 5px;
+    font-weight: large;
+    font-size: 20px;
+}
+
+.message-danger {
     display: flex;
     align-items: center;
     justify-content: space-between !important;

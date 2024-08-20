@@ -29,25 +29,17 @@
         <div class="centered-text">
           <h1>Redefinir sua senha</h1>
         </div>
-        <form id="forgot-password-form" action= "/recuperarSenha" method="POST">
-          <div class="form-group green-bg rounded">
-            <input type="email" id="email" name="email" placeholder="E-mail" required>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="send-code-button">Enviar Código</button>
-          </div>
-          </form>
-          <form id="forgot-password-form">
-          <div class="form-group green-bg rounded">
-            <input type="codigo" id="codigo" name="codigo" placeholder="Código" required>
-          </div>
-          <div class="form-group green-bg rounded">
-            <input type="novasenha" id="novasenha" name="novasenha" placeholder="Nova senha" required>
+
+        <form id="forgot-password-form" action= "/recuperarSenha/<%= token %>" method="POST">
+          <div class="form-group green-bg rounded password-container">
+            <input type="password" id="password" name="novasenha" placeholder="Nova senha" required>
+            <i class="bi bi-eye-fill" onclick="mostrarSenha()" id="icon"></i>
           </div>
           <div class="centered-text">
-            <button type="submit" class="green-button"onclick="window.location.href = '/evento';">ENTRAR</button>
+            <button type="submit" class="green-button">ENTRAR</button>
           </div>
         </form>
+
       </div>
     </section>
     <script src="/javascripts/script.js"></script>
