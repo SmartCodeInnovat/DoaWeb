@@ -85,7 +85,9 @@ h2 {
 
 #payment-amount-group {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 #payment-amount-group .inline-group {
@@ -93,11 +95,11 @@ h2 {
   flex-direction: column;
   flex: 1;
   margin-right: 10px;
+  max-width: 45%;
 }
 
 #payment-amount-group .inline-group:last-child {
   margin-right: 0;
-  margin-left: 250px;
 }
 
 #payment-method,
@@ -105,6 +107,7 @@ h2 {
   width: 100%;
   max-width: 700px;
   margin-bottom: 10px;
+  border-radius: 100px;
 }
 
 .amount-input {
@@ -119,24 +122,24 @@ h2 {
 
   #payment-method,
   #amount {
-    max-width: none;
+    max-width: 100%;
     margin-right: 0;
   }
 }
 
-
 .input-with-symbol input,
 .date-input input,
 .select-wrapper select {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 0.5px solid #626262;
-  margin-bottom: 10px;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #626262;
+  margin-bottom: 12px;
   background-color: transparent;
+  border-radius: 500px;
 }
 
 .input-with-symbol span {
-  padding: 10px;
+  padding: 12px;
 }
 
 .date-input {
@@ -145,44 +148,42 @@ h2 {
 }
 
 .date-input label {
-  margin-bottom: 5px; 
-}
-
-.date-input input,
-.date-input select {
-  flex: 1;
-  margin-left: 10px;
+  margin-bottom: 6px; 
+  display: block;
 }
 
 .date-input input {
-  margin-left: 0;
-  }
-
-.date-input select {
-  margin-right: 0;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #626262;
+  border-radius: 100px;
+  margin-bottom: 12px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 #fullname,
 #cpfInput,
 #amount,
-#date {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 0.5px solid #626262;
-  margin-bottom: 10px;
+#txtData {
+  width: 300%;
+  max-width: 600px; 
+  padding: 15px;
+  border: 1px solid #626262;
+  margin-bottom: 12px;
   background-color: transparent;
-  border-radius: 30px;
+  border-radius: 100px; 
+}
+
+#txtData {
+  margin-bottom: 20px;
 }
 
 #fullname,
-#cpf,
-#amount {
-  flex-basis: calc(50% - 10px);
+#cpInput{
   margin-right: 10px;
 }
 
@@ -191,21 +192,11 @@ h2 {
   max-width: 300px;
 }
 
-#fullname,
-#cpfInput,
-#txtData {
-  width: 97vh;
-}
-
-
-#amount {
-  margin-right: 0;
-}
-
 #fullname-cpf-group {
   display: flex;
-  justify-content: space-between;
-  white-space: nowrap;
+  flex-direction: column; 
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 .inline-group label {
@@ -217,12 +208,8 @@ h2 {
   justify-content: space-between;
 }
 
-#fullname-cpf-group .inline-group {
-  flex: 1;
-}
-
-#campo-cpf, #campo-fullname {
-  flex: 1;
+.inline-group label {
+  margin-right: 10px;
 }
 
 #submit-button {
@@ -244,26 +231,11 @@ h2 {
   cursor: pointer;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
 .select-wrapper select {
-  width: calc(100% - 1px);
-  padding: 10px;
-  border: 0.5px solid #626262;
-  appearance: none;
-  border-radius: 30px;
-}
-
-.date-input input {
-  padding: 10px;
-  border: 0.5px solid #626262;
-  appearance: none;
-  border-radius: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #626262;
+  border-radius: 8px; 
 }
 
 .form-group.text-center {
@@ -272,25 +244,38 @@ h2 {
   margin-right: auto;
 }
 
+.form-group.text-center label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group.text-center input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  border: 1px solid #626262;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
 .input-with-symbol {
   display: flex;
 }
 
 .input-with-symbol input {
   flex: 1;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
 }
 
 .input-with-symbol span {
-  padding: 10px;
+  padding: 12px;
 }
 
 .date-input input,
 .date-input select {
-  margin-bottom: 10px;
-  margin-left: 0; 
+  margin-bottom: 12px;
 }
 
 @media (min-width: 1280px) {
@@ -361,15 +346,20 @@ h2 {
     flex-direction: column;
   }
 
-  #fullname,#cpfInput,#payment-method,#amount,#txtData{
-    width: 30vh;
+  #fullname {
+    width: 90%;
+  }
+
+  #cpfInput,#payment-method,#amount,#txtData{
+    width: 90%;
+    max-width: none;
   }
 
   .form-group input,
   .form-group select {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 }
 
@@ -378,34 +368,45 @@ h2 {
     display: block;
   }
 }
-@media only screen and (max-width: 600px) {
-    #fullname,
-    #cpfInput,
-    #payment-method,
-    #amount,
-    #txtData {
-      width: calc(100% - 22px);
-    }
 
-    #submit-button {
-      margin-left: auto;
-      margin-right: auto;
-    }
+ /* Tooltip container */
+ .tooltip-container {
+  position: relative;
+  display: inline-block;
+}
 
-    .radio-buttons {
-      justify-content: center;
-    }
+/* Tooltip text */
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the field */
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-  #payment-amount-group label[for="amount"] {
-    margin-bottom: 26px;
-  }
+/* Tooltip arrow */
+.tooltip-container .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
 
-  #payment-method,
-  #amount {
-    max-width: 135px;
-  }
-
-    h2 {
-      font-size: 1.5rem;
-    }
-  }
+/* Show the tooltip text when hovering */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

@@ -214,6 +214,13 @@ router.post("/pagamento/:id", async (req, res) => {
   var cpf2 = cpf2.replace('.', '');
   var cpf3 = cpf2.replace('-', '');
 
+  //Formatando o valor
+  var value = req.body.am;
+  var value1 = value.replace('R', '');
+  var value2 = value1.replace('$', '');
+  var value3 = value2.replace(",",".")
+  var valorNumber = parseFloat(value3);
+
   //Dados que serão enviados ao Banco
   const data = {
     name: req.body.fullname,
@@ -272,7 +279,7 @@ router.post("/pagamento/:id", async (req, res) => {
           body: JSON.stringify({
             "billingType": "BOLETO",
             "customer": ressNotFirstTime.data[0].id,
-            "value": req.body.am,
+            "value": valorNumber,
             "dueDate": req.body.data
           })
         })
@@ -281,7 +288,6 @@ router.post("/pagamento/:id", async (req, res) => {
       } 
    //Se a opção de pagamento for Cartão de Crédito
    else if (req.body.payment === "credit-card") {
-    console.log(ressNotFirstTime);
     let reqsPayment = await fetch("https://sandbox.asaas.com/api/v3/payments", {
       method: "POST",
       headers: {
@@ -292,7 +298,7 @@ router.post("/pagamento/:id", async (req, res) => {
       body: JSON.stringify({
         "billingType": "CREDIT_CARD",
         "customer": ressNotFirstTime.data[0].id,
-        "value": req.body.am,
+        "value": valorNumber,
         "dueDate": req.body.data
       })
     })
@@ -312,7 +318,7 @@ router.post("/pagamento/:id", async (req, res) => {
     body: JSON.stringify({
       "billingType": "PIX",
       "customer": ressNotFirstTime.data[0].id,
-      "value": req.body.am,
+      "value": valorNumber,
       "dueDate": req.body.data
     })
   })
@@ -355,7 +361,7 @@ if (req.body.situation === "first-time") {
       body: JSON.stringify({
         "billingType": "BOLETO",
         "customer": ress.id,
-        "value": req.body.am,
+        "value": valorNumber,
         "dueDate": req.body.data
       })
     })
@@ -374,7 +380,7 @@ if (req.body.situation === "first-time") {
       body: JSON.stringify({
         "billingType": "CREDIT_CARD",
         "customer": ress.id,
-        "value": req.body.am,
+        "value": valorNumber,
         "dueDate": req.body.data
       })
     })
@@ -393,7 +399,7 @@ if (req.body.situation === "first-time") {
       body: JSON.stringify({
         "billingType": "PIX",
         "customer": ress.id,
-        "value": req.body.am,
+        "value": valorNumber,
         "dueDate": req.body.data
       })
     })
