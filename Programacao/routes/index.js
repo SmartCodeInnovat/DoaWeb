@@ -1,6 +1,6 @@
 var express = require('express');
 const nodemailer = require("nodemailer");
-var pasth = require('path');
+const path = require('path'); 
 var bcrypt = require('bcrypt');
 var router = express.Router();
 var db = require("../src/models/dao/eventosDAO");
@@ -92,15 +92,51 @@ router.post("/recuperarSenha", async (req, res) => {
       },
     });
       const info = {
+        attachments: [{
+          filename: 'logo.png', // Nome do arquivo
+          path: path.join(__dirname, '../public/images/logo.png'), // Caminho do arquivo local
+          cid: 'logo' // Referência do Content-ID no HTML
+      },
+      {
+        filename: 'aperto.png', // Nome do arquivo
+        path: path.join(__dirname, '../public/images/aperto.png'), // Caminho do arquivo local
+        cid: 'aperto' // Referência do Content-ID no HTML
+    }
+    ],
+        
         from: "Smart Code", // sender address
         to:  `${userEmail}`, // list of receivers
         subject: 'Redefinição de Senha - DoaWeb', // Subject lin
-        html: `<p>Olá ${userName},</p>
+        html: `
+              <div style="font-family: Arial, sans-serif; color: #333;">
+            <div style="max-width: 600px; margin: 0 auto; padding: 20px; text-align: center;">
+                <img src="cid:logo" alt="Instagram" style="width: 20vh; margin-bottom: 20px;">
+                <h2 style="font-weight: normal; color: #000;">Olá, ${userName} </h2>
+                <p>Recebemos uma solicitação para redefinir a senha da sua conta no DoaWeb. Se você fez essa solicitação, clique no botão abaixo para criar uma nova senha.</p>
+
+                <a href="${resectURL}" style="background-color: #2F7D53; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: block; margin-bottom: 10px;">Redefina sua senha</a>
+              
+
+                <p style="color: #777; margin-top: 20px;">
+                  O link acima é válido por 24 horas. Se você não tiver solicitado a redefinição de senha, por favor, ignore este e-mail. Sua senha permanecerá inalterada.
+                </p>
+
+                <p style="color: #777;">Se precisar de mais ajuda, você pode entrar em contato com nosso suporte pelo e-mail <a href="mailto:suporte@doaweb.com">suporte@doaweb.com</a> ou acessar nossa Central de Ajuda em <a href="https://www.doaweb.com/ajuda">https://www.doaweb.com/ajuda</a>.</p>
+
+                <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 20px 0;">
+
+                <div style="text-align: center;">
+                    <p style="color: #ccc; font-size: 12px;">Atenciosamente, Equipe DoaWeb.</p>
+                    <img src="cid:aperto" alt="DoaWeb" style="width: 40px;">
+                </div>
+            </div>
+        </div>`,
+        /*<p>Olá ${userName},</p>
               <p>Recebemos uma solicitação para redefinir a senha da sua conta no DoaWeb. Se você fez essa solicitação, siga o link abaixo para criar uma nova senha.</p>
               <p><a href="${resectURL}">Redefinir Senha</a></p>
               <p>O link acima é válido por 24 horas. Se você não tiver solicitado a redefinição de senha, por favor, ignore este e-mail. Sua senha permanecerá inalterada.</p>
               <p>Se precisar de mais ajuda, você pode entrar em contato com nosso suporte pelo e-mail <a href="mailto:suporte@doaweb.com">suporte@doaweb.com</a> ou acessar nossa Central de Ajuda em <a href="https://www.doaweb.com/ajuda">https://www.doaweb.com/ajuda</a>.</p>
-              <p>Atenciosamente,<br>Equipe DoaWeb</p>`,    
+              <p>Atenciosamente,<br>Equipe DoaWeb</p>*/
       };
       new Promise((resolve, reject) =>{
       transporter.sendMail(info)
