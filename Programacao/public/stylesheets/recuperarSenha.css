@@ -90,7 +90,7 @@ body {
 
 .centered-text {
     text-align: center;
-    margin: 20px;
+    margin: 20px; 
     align-items: center;
 }
 
@@ -128,21 +128,14 @@ p {
     font-size: 15px;
 }
 
-.content {
-    flex: 1;
-    padding: 10px 0;
-}
-
-.content2 {
-    flex: 1;
-    padding: 20px;
-}
-
 .contentsenha {
     flex: 1;
-    padding: 30px;
+    padding: 40px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
-
 
 .send-code-button {
     margin-top: 10px;
@@ -163,42 +156,40 @@ p {
 .send-code-button:hover {
     background-color: #2F7D53;
     color: #fff;
+    cursor: pointer;
 }
 
 .form-group {
+    width: 100%; 
     margin-bottom: 20px;
+    text-align: center;
+  justify-content: center;
 }
+
 
 .green-bg {
     background-color: #A1DBB2;
     border-radius: 10px;
     padding: 15px;
-    margin: 20px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="password"],
-.form-group input[type="codigo"],
-.form-group input[type="novasenha"] {
+.form-group input[type="email"] {
     background-color: #A1DBB2;
-    padding: 4px;
+    padding: 4px; 
     border: none;
     border-radius: 8px;
-    width: calc(100% - 20px);
     outline: none;
+   width: 200px; 
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-input[type="codigo"]::placeholder,
-input[type="novasenha"]::placeholder {
+
+
+input[type="email"]::placeholder {
     font-weight: bold;
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-
 }
+
 .password-container {
     position: relative;
     display: flex;
@@ -206,8 +197,8 @@ input[type="novasenha"]::placeholder {
 }
 
 .password-container input {
-    width: calc(100% - 40px); /* Ajusta a largura do input */
-    padding-right: 40px; /* Espaço para o ícone */
+    width: calc(100% - 40px);
+    padding-right: 40px; 
 }
 
 .password-container i {
@@ -288,8 +279,6 @@ input[type="novasenha"]::placeholder {
         display: none;
     }
 
-    .content,
-    .content2,
     .contentsenha {
         width: calc(100% - 40px);
         margin: 10px auto;

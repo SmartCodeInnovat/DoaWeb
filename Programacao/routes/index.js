@@ -60,7 +60,8 @@ router.post("/login", async (req, res) => {
     const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
     if (isPasswordMatch) {
       var eventos = await db.getEventos();
-      res.render("evento", { title: "Express", evento: eventos });
+      res.redirect("/evento");
+      //res.render("evento", { title: "Express", evento: eventos });
 
     } else {
       message = "Sua senha está incorreta!";
@@ -127,11 +128,14 @@ router.post("/recuperarSenha", async (req, res) => {
 });
 
 router.get("/recuperarSenha/:token", async (req, res) => {
+  setTimeout(() => { message = "" }, 1000);
   const token = req.params.token;
   res.render('senhaNova', { title: 'Nova Senha',message, type,token:token });
+  setTimeout(() => { message = "" }, 2000);
 });
 
 router.post("/recuperarSenha/:token", async (req, res) => {
+  setTimeout(() => { message = "" }, 1000);
   const token = req.params.token;
   const newPassword = req.body.novasenha;
   try {
@@ -142,7 +146,7 @@ router.post("/recuperarSenha/:token", async (req, res) => {
     {_id: userId },          // Filtro para encontrar o documento
     { $set: { password: hashedPassword } }  // Atualiza o campo senha
 )
-    res.redirect('/evento');
+    res.redirect('/login');
   } catch (error) {
     console.error('Erro na redefinição de senha:', error);
     res.status(400).send('Token inválido ou expirado.');

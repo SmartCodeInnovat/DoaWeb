@@ -9,49 +9,20 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
+  <nav>
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo da Loja" />
+    </div>
+    <div class="menu-btn">
+        <i class="fa fa-bars fa-2x" onclick="menuShow()"></i>
+    </div>
+    <ul>
+      <li><a href="/cadastro">Cadastro</a></li>
+      <li><a href="/login" class="active">Login</a></li>
+    </ul>
+  </nav>
 
-      <div class="container" alt= >
-      </div> 
-      <main class="main">
-
-        <header>
-        <nav id="navbar">
-            <div class="logo">
-              <img src="/images/logo.png" alt="Logo da Loja" />
-            </div>
-          <div id="button-container">
-            <button class="btn-default" onclick="window.location.href = '/cadastro';">
-                Cadastro
-            </button>
-
-          <button class="btn-default" onclick="window.location.href = '/login';">
-              Login
-          </button>
-            </div>
-            <div class="dropdown">
-              <button id="mobile_btn"><i class="fas fa-bars"></i></button>
-              <div class="dropdown-content">
-                <a href="/login">Login</a>
-                <a href="/cadastro">Cadastro</a>
-              </div>
-            </div>
-
-          </div>
-
-        </nav>
-
-        <div id="mobile_menu">
-            <ul id="mobile_nav_list">
-                <div class="logo">
-                  <img src="/images/logo.png" alt="Logo da Loja" />
-                </div>
-                <button class="btn-default" onclick="window.location.href = '/login';">
-                    Login
-                </button>
-        </div>
-    </header>
-
-    <main id="content">
+   <main id="content">
       <section id="home">
           <div id="cta">
                 <h1 class="title">
@@ -66,10 +37,9 @@
 
               </section>
     </main>
+    <%- include("./partials/footer");%>
 
-           <%- include("./partials/footer");%>
-        <script>
-        
-        </script>
+
+           <script src="/javascripts/home.js"></script>
 </body>
 </html>
