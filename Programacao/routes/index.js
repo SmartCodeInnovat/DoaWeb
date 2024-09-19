@@ -81,7 +81,7 @@ router.post("/recuperarSenha", async (req, res) => {
    if(existingEmail){
     const userName = existingEmail.name.split(/\s+/)[0];
     const token = jwt.sign({ id: existingEmail._id }, segredo, { expiresIn: '24h' });
-    const resectURL = `http://localhost:3000/recuperarSenha/${token}`;
+    const resectURL = `http://192.168.1.101:3000/recuperarSenha/${token}`;
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -276,9 +276,9 @@ router.post("/pagamento/:id", async (req, res) => {
 
   //Verificando se é a primeira vez doando
   const existingDoacao = await donation.findOne({ cpf: data.cpf });
-
+  console.log(req.body.doacao);
   if(existingDoacao){
-    if(req.body.situation === "first-time"){
+    if(req.body.doacao === "primeira"){
       message = "Esta não é a sua primeira vez doando!";
       type = "danger";
       res.render("pagamento", { title: "Express", message: message, type: type, evento:doc });
@@ -370,7 +370,7 @@ router.post("/pagamento/:id", async (req, res) => {
   
   else{
 //Se for a primeira vez doando
-if (req.body.situation === "first-time") {
+if (req.body.doacao === "primeira") {
   //Criando o cliente
   let reqs = await fetch("https://sandbox.asaas.com/api/v3/customers", {
     method: 'POST',
